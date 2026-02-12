@@ -71,34 +71,20 @@
     </td>
   </tr>
 </table>
----
-
-## 🚀 Funcionalidades Principales
-
-### 🎛️ Control y Gestión
-* **Categorización Inteligente:** Organización por estaciones (Cocina, Servicio, McCafé, etc.) con navegación fluida.
-* **Reglas de Vencimiento Dinámicas:** Cada producto tiene su lógica de tiempo asignada.
-* **Ajuste Temporal (Offset):** Permite restar horas/minutos/días al vencimiento antes de imprimir, ideal para ajustar el tiempo real de descongelación o apertura.
-
-### 🖨️ Integración de Hardware (IoT)
-* **Impresión Térmica Directa:** Conexión con impresoras POS (ESC/POS) para generar etiquetas físicas de trazabilidad al instante.
-* **Driver Personalizado:** Configuración específica para detectar la impresora de red o local bajo el alias `"ticketera"`.
-
-### 📊 Dashboard en Tiempo Real
-* **Monitor de Estados (Semáforo):** Visualización clara del estado de los productos:
-    * 🟢 **Verde:** > 45 minutos de vida útil.
-    * 🟡 **Amarillo:** < 45 minutos (Advertencia).
-    * 🔴 **Rojo:** < 15 minutos (Peligro).
-* **Alertas Sonoras:** Notificación auditiva automática cuando un producto entra en estado crítico (Rojo).
-* **Ordenamiento Inteligente:** Los productos próximos a vencer aparecen automáticamente primero.
-* **Dashboard Global:** Vista unificada que agrupa los vencimientos activos de las 4 categorías en una sola pantalla de control.
-
-### 🔄 Acciones de Trazabilidad
-* **Renovación Rápida:** Reimpresión de etiqueta y reinicio del temporizador con un solo clic.
-* **Importación entre Sectores:** Capacidad de compartir un mismo timer (producto) entre diferentes categorías sin duplicar la lógica de vencimiento.
-* **Eliminación:** Gestión de mermas y retiro de productos.
 
 ---
+
+## 🧠 Lógica y Desafíos Técnicos
+
+Aunque la interfaz es sencilla para el operario, el backend gestiona lógica compleja:
+
+* **Arquitectura de Impresión RAW:** El sistema no usa drivers de impresión del navegador. Envía comandos **ESC/POS directos** al puerto de la impresora local o de red para una velocidad instantánea (< 0.5s).
+* **Relaciones N:N Complejas:** Un mismo `Producto` puede tener diferentes reglas según el `Sector` (Cocina/McCafé), resuelto mediante una base de datos relacional normalizada.
+* **Gestión de Estado (Frontend):** Uso de **Delegación de Eventos** en JavaScript para manipular el DOM de múltiples temporizadores simultáneos sin degradar el rendimiento del navegador.
+* **Sistema de Alias:** Configuración flexible que permite detectar cualquier impresora en la red simplemente asignándole el recurso compartido `"ticketera"`.
+
+---
+
 
 ## 🛠️ Stack Tecnológico
 
