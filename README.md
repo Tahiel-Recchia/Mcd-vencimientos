@@ -6,12 +6,71 @@
 ---
 
 ## 📸 Capturas de Pantalla
-![Categorías](app/screenshots/Categorias.png)
-![Productos](app/screenshots/McCafe.png)
-![Impresión de Vencimientos](app/screenshots/selector-de-vencimiento.png)
-![Dashboard de vencimientos](app/screenshots/Dashboard.png)
-![Alerta de vencimiento](app/screenshots/Alerta-Vencimiento.png)
-![Dashboard de todas las categorías](app/screenshots/dashboard-Global.png)
+<h2>📸 Galería y Flujo de Trabajo</h2>
+
+<table>
+  <tr>
+    <td width="40%" valign="top">
+      <h3>1. Navegación y Selección de Productos</h3>
+      <p><strong>Interfaz Táctil Optimizada:</strong> Diseño modular con botones grandes para facilitar el uso en pantallas táctiles de cocina.</p>
+      <ul>
+        <li><strong>Categorización:</strong> Separación lógica por estaciones de trabajo (McCafé, Servicio, Cocina).</li>
+        <li><strong>Catálogo Visual:</strong> Selección rápida de productos con indicadores visuales claros.</li>
+      </ul>
+    </td>
+    <td width="60%">
+      <img src="screenshots/Categorias.png" alt="Menú de Categorías" style="max-width:100%;">
+      <br><br>
+      <img src="screenshots/McCafe.png" alt="Listado de Productos McCafe" style="max-width:100%;">
+    </td>
+  </tr>
+
+  <tr>
+    <td width="40%" valign="top">
+      <h3>2. Motor de Reglas de Vencimiento</h3>
+      <p><strong>Configuración Pre-Impresión:</strong> Antes de generar la etiqueta, el sistema permite ajustes finos.</p>
+      <ul>
+        <li><strong>Cálculo Automático:</strong> El sistema sugiere la hora exacta basada en las reglas del producto.</li>
+        <li><strong>Ajuste Manual (Offset):</strong> Permite restar tiempo (horas/minutos) para compensar tiempos de descongelación o apertura previos.</li>
+        <li><strong>Integración IoT:</strong> Al confirmar, se envía el comando RAW a la impresora térmica.</li>
+      </ul>
+    </td>
+    <td width="60%">
+      <img src="screenshots/selector-de-vencimiento.png" alt="Modal de Configuración de Vencimiento" style="max-width:100%;">
+    </td>
+  </tr>
+
+  <tr>
+    <td width="40%" valign="top">
+      <h3>3. Dashboard de Monitoreo en Tiempo Real</h3>
+      <p><strong>Gestión Visual de Riesgos:</strong> Panel de control específico por sector.</p>
+      <ul>
+        <li><strong>Semáforo de Estados:</strong>
+            <br>🟢 <strong>Seguro:</strong> > 45 mins.
+            <br>🟡 <strong>Atención:</strong> < 45 mins.
+            <br>🔴 <strong>Crítico:</strong> < 15 mins (Alerta Sonora).
+        </li>
+        <li><strong>Ordenamiento Prioritario:</strong> Los productos próximos a vencer suben automáticamente a la primera posición.</li>
+      </ul>
+    </td>
+    <td width="60%">
+      <img src="screenshots/Dashboard-McCafe.png" alt="Dashboard Sector McCafe" style="max-width:100%;">
+      <br><br>
+      <img src="screenshots/Alerta-Vencimiento.png" alt="Alerta Roja de Vencimiento Critico" style="max-width:100%;">
+    </td>
+  </tr>
+
+  <tr>
+    <td width="40%" valign="top">
+      <h3>4. Centro de Comando Global</h3>
+      <p><strong>Visión Unificada (Gerencial):</strong></p>
+      <p>Permite a los gerentes supervisar todos los sectores desde una única pantalla, detectando cuellos de botella o pérdidas potenciales en cualquier área del restaurante simultáneamente.</p>
+    </td>
+    <td width="60%">
+      <img src="screenshots/dashboard-Global.png" alt="Dashboard Global de Todas las Categorías" style="max-width:100%;">
+    </td>
+  </tr>
+</table>
 ---
 
 ## 🚀 Funcionalidades Principales
