@@ -5,7 +5,7 @@
     @php
         $catName = strtolower($category->name);
 
-        {{--TODO sacar el codigo viejo de los temas--}}
+        // TODO sacar el codigo viejo de los temas
         $theme = [
             'bg_app'      => 'bg-gray-100',
             'bg_header'   => 'bg-[#DA291C]',
