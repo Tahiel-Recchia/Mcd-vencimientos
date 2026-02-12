@@ -5,7 +5,6 @@
 
 ---
 
-## 📸 Capturas de Pantalla
 <h2>📸 Galería y Flujo de Trabajo</h2>
 
 <table>
