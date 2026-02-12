@@ -132,8 +132,8 @@ Para correr este proyecto localmente necesitas:
 
 1.  **Clonar el repositorio:**
     ```bash
-    git clone [https://github.com/tu-usuario/nombre-repo.git](https://github.com/tu-usuario/nombre-repo.git)
-    cd nombre-repo
+    git clone [https://github.com/Tahiel-Recchia/Mcd-vencimientos.git]
+    cd Mcd-vencimientos
     ```
 
 2.  **Instalar dependencias de Backend:**
