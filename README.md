@@ -6,12 +6,12 @@
 ---
 
 ## 📸 Capturas de Pantalla
-![Categorías](screenshots/Categorias.png)
-![Productos](screenshots/McCafe.png)
-![Impresión de Vencimientos](screenshots/selector-de-vencimiento.png)
-![Dashboard de vencimientos](screenshots/Dashboard.png)
-![Alerta de vencimiento](screenshots/Alerta-Vencimiento.png)
-![Dashboard de todas las categorías](screenshots/dashboard-Global.png)
+![Categorías](app/screenshots/Categorias.png)
+![Productos](app/screenshots/McCafe.png)
+![Impresión de Vencimientos](app/screenshots/selector-de-vencimiento.png)
+![Dashboard de vencimientos](app/screenshots/Dashboard.png)
+![Alerta de vencimiento](app/screenshots/Alerta-Vencimiento.png)
+![Dashboard de todas las categorías](app/screenshots/dashboard-Global.png)
 ---
 
 ## 🚀 Funcionalidades Principales
