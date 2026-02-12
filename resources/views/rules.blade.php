@@ -6,10 +6,10 @@
     <div class="flex flex-col h-screen bg-gray-100">
 
         {{-- 1. CABECERA CON NAVEGACIÓN --}}
-        {{-- Usamos el mismo rojo, pero agregamos el botón de volver --}}
-        <div class="bg-[#DA291C] text-white p-4 shadow-md flex justify-between items-center z-10 shrink-0">
 
-            {{-- Botón Volver (Estilo 'Ghost' para no competir con el título) --}}
+        <div class="bg-[#DA291C] text-white p-4 shadow-md flex justify-between items-center z-10 shrink-0">
+        {{-- TODO cambiar esto para que use el section del app--}}
+            {{-- Botón Volver--}}
             <a href="{{ route('index') }}"
                class="flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl
                   transition font-bold uppercase tracking-wider text-sm border border-white/30">
@@ -19,20 +19,18 @@
                 Volver
             </a>
 
-            {{-- Título de la Categoría --}}
+            {{-- Título --}}
             <h2 class="text-3xl font-extrabold uppercase italic tracking-tighter text-right">
                 {{ $product->name }}
             </h2>
         </div>
 
-        {{-- 2. ÁREA DE PRODUCTOS (SCROLLABLE) --}}
-        {{-- 'overflow-y-auto' permite que solo esta parte haga scroll si hay muchos productos --}}
+        {{-- 2. ÁREA DE PRODUCTOS --}}
         <div class="flex-grow p-4 overflow-y-auto">
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-20">
                 @foreach($rules as $rule)
 
-                    {{-- Cada producto es un formulario que envía la orden de imprimir --}}
                     <form action="{{route('product.print', $product->id)}}" method="POST" class="h-48">
                         @csrf
                         <input type="hidden" name="producto_id" value="{{ $rule->id }}">

@@ -11,13 +11,13 @@
             </a>
         @endsection
 
-        {{-- ÁREA DE SELECCIÓN (GRILLA DE BOTONES DE CATEGORÍA) --}}
+        {{-- ÁREA DE SELECCIÓN --}}
         <div class="flex-grow p-4 md:p-8 overflow-y-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 h-full pb-10">
                 @foreach($categories as $categoria)
                     <a href="{{ route('category.products', $categoria->id) }}"
                        class="group relative flex flex-col items-center justify-center p-6
-                              {{ $categoria->styles['theme'] }} {{-- <--- AQUI SE APLICA EL TEMA ESPECÍFICO --}}
+                              {{ $categoria->styles['theme'] }}
                               bg-puesto-btn text-puesto-btn-text border-b-[8px] border-puesto-btn-border
                               hover:bg-puesto-btn-hover-bg hover:text-puesto-btn-hover-text
                               rounded-3xl shadow-xl hover:shadow-2xl
@@ -36,8 +36,6 @@
                         <span class="text-3xl md:text-5xl font-black uppercase tracking-tighter text-center z-10 leading-none">
                             {{ $categoria->name }}
                         </span>
-
-                        {{-- Barra decorativa debajo --}}
                         <div class="w-12 h-1.5 md:w-20 md:h-2 mt-4 rounded-full opacity-50 bg-puesto-accent">
                         </div>
                     </a>

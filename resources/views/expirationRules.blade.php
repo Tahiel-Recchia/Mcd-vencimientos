@@ -4,7 +4,7 @@
 @section('content')
     <div class="{{ $category->styles['theme'] }} flex flex-col h-screen bg-puesto-app transition-colors duration-300 font-sans text-gray-800">
 
-        {{-- 1. CABECERA --}}
+        {{--  CABECERA --}}
         @section('header_left')
             <a href="{{ route('category.products', $category) }}" class="flex items-center px-4 py-2 bg-black/10 hover:bg-black/20 rounded-lg font-bold uppercase text-xs border border-white/20 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -24,7 +24,7 @@
         @endsection
 
 
-        {{-- 2. GRILLA DE REGLAS --}}
+        {{--  GRILLA DE REGLAS --}}
         <div class="flex-grow p-4 overflow-y-auto">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-20">
                 @foreach($rules as $rule)

@@ -59,7 +59,8 @@ class ProductCatalogSeeder extends Seeder
         // 7. Donuts
         $p = $cocina->products()->create(['name' => 'Donuts', 'active' => true]);
         $p->expirationRules()->create(['location' => 'A temperatura ambiente', 'duration_minutes' => 1440, 'defrosting' => 1, 'defrosting_time' => 90]); // 24 horas
-
+        $p->Category()->attach($servicio->id);
+        $p->Category()->attach($mccafe->id);
         // 8. Ensaladas
         $p = $cocina->products()->create(['name' => 'Ensaladas', 'active' => true]);
         $p->expirationRules()->create(['location' => 'Refrigerador o vitrina', 'duration_minutes' => 840]); // 14 horas (máximo)
@@ -237,9 +238,6 @@ class ProductCatalogSeeder extends Seeder
         $p = $mccafe->products()->create(['name' => 'Crumble de manzana', 'active' => true]);
         $p->expirationRules()->create(['location' => 'Vitrina de refrigerados', 'duration_minutes' => 4320, 'defrosting' => 1, 'defrosting_time' => 1440]); // 3 días incl. 24hs desc.
 
-// 14. Donuts
-        $p = $mccafe->products()->create(['name' => 'Donuts', 'active' => true]);
-        $p->expirationRules()->create(['location' => 'Parte superior del sector caliente de la vitrina', 'duration_minutes' => 720, 'defrosting' => 1, 'defrosting_time' => 90]); // 12 horas incl. 90 min desc.
 
 // 15. Frutos rojos
         $p = $mccafe->products()->create(['name' => 'Frutos rojos', 'active' => true]);

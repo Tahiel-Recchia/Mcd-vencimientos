@@ -25,7 +25,7 @@ class ActiveTimer extends Model
         return $this->belongsTo(ExpirationRule::class);
     }
 
-    public function category(){
+    public function categories(){
         return $this->belongsToMany(Category::class);
     }
 

@@ -14,6 +14,8 @@ Route::get('/category/{category}', [CategoryController::class, 'getProductsFromC
 Route::post('/product/{product}', [ProductController::class, 'viewExpirationRules'])->name('product.rules');
 Route::post('/print/{rule}', [PrintController::class, 'print'])->name('print.ticket');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.view');
-Route::delete('/active-timers/{id}', [DashboardController::class, 'deleteTimer'])->name('timers.destroy');
+Route::delete('/active-timers/{id}/{categoryId}', [DashboardController::class, 'deleteTimer'])->name('timers.destroy');
 Route::get('/globalDashboard/', [DashboardController::class, 'globalDashboard'])->name('dashboard.global');
 Route::put('/updateTimer/{id}', [DashboardController::class, 'updateTimer'])->name('timers.update');
+Route::get('/timers/{id}/categories', [DashboardController::class, 'getCategoriesFromProduct']);
+Route::post('/import-timer/{timer}/{category}', [DashboardController::class, 'importTimer'])->name('timers.import');

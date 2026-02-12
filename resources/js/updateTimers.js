@@ -7,10 +7,10 @@ window.updateTimers = function() {
         const expireDate = new Date(expiresStr).getTime();
         const distance = expireDate - now;
 
-        // Extraemos el ID completo (ej: "1-45")
+
         const fullId = card.id.replace('timer-card-', '');
 
-        // Buscamos los elementos internos por ese ID único
+
         const display = document.getElementById(`timer-${fullId}`);
         const nameEl = document.getElementById(`name-${fullId}`);
         const locEl = document.getElementById(`location-${fullId}`);
@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTimers();
 });
 
-// Aseguramos que el listener del botón de cerrar no rompa el script si el botón no existe
 document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('closeNotification');
     if (closeBtn) {
@@ -83,11 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateTimers, 1000);
     updateTimers();
 });
-function sendNotification(id) {
-
-
-
-}
 
 function showNotification(id, name, expirationRule){
     let notifications = JSON.parse(sessionStorage.getItem('notifications')) || [];

@@ -13,16 +13,14 @@ function toggleInputs(ruleId) {
     }
 }
 
-/**
- * Esta función detiene el envío, calcula los minutos y luego envía
- */
+
 function processAndSubmit(ruleId) {
     const unitSelect = document.getElementById(`unit-${ruleId}`);
     const valInput = document.getElementById(`val-${ruleId}`);
     const dateInput = document.getElementById(`date-${ruleId}`).value;
     const finalInput = document.getElementById(`final-${ruleId}`);
 
-    // Realizamos el cálculo
+
     if (unitSelect.value === 'custom' && dateInput) {
         const selectedDate = new Date(dateInput);
         const now = new Date();
@@ -36,7 +34,7 @@ function processAndSubmit(ruleId) {
 
     console.log("Minutos a restar calculados: " + finalInput.value);
 
-    // Retornamos true para permitir que el formulario se envíe con el valor ya cargado
+
     return true;
 }
 

@@ -7,7 +7,7 @@
             <section class="{{ $category->styles['theme'] ?? 'theme-cocina' }} bg-puesto-soft border-b border-gray-300 pb-12 pt-8">
                 <div class="max-w-[1600px] mx-auto px-6">
 
-                    {{-- Cabecera de la Sección --}}
+                    {{-- Cabecera  --}}
                     <div class="flex items-end justify-between mb-8 border-b-4 border-puesto-header pb-2">
                         <div class="flex items-center gap-4">
                             <h2 class="text-4xl font-black uppercase italic tracking-tighter text-gray-800">
@@ -32,14 +32,14 @@
                     @else
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
                             @foreach($category->activeTimers as $timer)
-                                {{-- TARJETA: Diseño unificado con ID compuesto para evitar conflictos --}}
+                                {{-- TARJETA --}}
                                 <div id="timer-card-{{ $category->id }}-{{ $timer->id }}"
                                      class="timer-card bg-white rounded-2xl shadow-lg border-b-[6px] border-puesto-header flex flex-col overflow-hidden transform transition-all hover:scale-[1.02] active:scale-95"
                                      data-expires="{{ $timer->expires_at }}">
 
                                     <div class="p-5 flex-grow">
                                         <div class="mb-1">
-                                            {{-- Nombre y Ubicación con IDs únicos --}}
+                                            {{-- Nombre y Ubicación --}}
                                             <h2 id="name-{{ $category->id }}-{{ $timer->id }}" class="text-xl font-black text-gray-800 leading-tight uppercase truncate">
                                                 {{ $timer->product->name }}
                                             </h2>
@@ -48,7 +48,7 @@
                 </span>
                                         </div>
 
-                                        {{-- RELOJ: Estilo unificado --}}
+                                        {{-- RELOJ --}}
                                         <div class="mt-4 mb-4 py-6 rounded-xl bg-gray-50 border border-gray-200 flex flex-col items-center justify-center relative">
                 <span id="timer-{{ $category->id }}-{{ $timer->id }}" class="timer-display text-4xl font-mono font-black text-gray-700 tabular-nums z-10">
                     00:00:00
@@ -56,14 +56,14 @@
                                             <div class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-1">Tiempo restante</div>
                                         </div>
 
-                                        {{-- Información de Fechas (Restaurada) --}}
+                                        {{-- Información de Fechas --}}
                                         <div class="grid grid-cols-2 gap-4 text-[10px] font-bold text-gray-400 uppercase border-t border-gray-100 pt-4">
                                             <div>Elab: <span class="text-gray-800 block">{{ \Carbon\Carbon::parse($timer->started_at)->format('H:i d/m') }}</span></div>
                                             <div class="text-right">Vence: <span class="text-puesto-header block">{{ \Carbon\Carbon::parse($timer->expires_at)->format('H:i d/m') }}</span></div>
                                         </div>
                                     </div>
 
-                                    {{-- BOTONERA: Diseño unificado con iconos y botón rojo sólido --}}
+                                    {{-- BOTONERA --}}
                                     <div class="grid grid-cols-2 h-16 border-t border-gray-100">
                                         <button onclick="deleteTimer({{ $timer->id }})"
                                                 class="bg-red-600 hover:bg-red-700 text-white flex flex-col items-center justify-center transition-colors active:brightness-90">
