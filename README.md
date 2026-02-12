@@ -1,59 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![Estado del Proyecto](https://img.shields.io/badge/Estado-Finalizado-success)
+![Versión](https://img.shields.io/badge/Versión-1.0.0-blue)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> **Solución Full Stack** diseñada para automatizar el control de vida útil secundaria, impresión de etiquetas y trazabilidad de productos en entornos de comida rápida de alta demanda.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📸 Capturas de Pantalla
+![Categorías](screenshots/Categorias.png)
+![Productos](screenshots/McCafe.png)
+![Impresión de Vencimientos](screenshots/selector-de-vencimiento.png)
+![Dashboard de vencimientos](screenshots/Dashboard.png)
+![Alerta de vencimiento](screenshots/Alerta-Vencimiento.png)
+![Dashboard de todas las categorías](screenshots/dashboard-Global.png)
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Funcionalidades Principales
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🎛️ Control y Gestión
+* **Categorización Inteligente:** Organización por estaciones (Cocina, Servicio, McCafé, etc.) con navegación fluida.
+* **Reglas de Vencimiento Dinámicas:** Cada producto tiene su lógica de tiempo asignada.
+* **Ajuste Temporal (Offset):** Permite restar horas/minutos/días al vencimiento antes de imprimir, ideal para ajustar el tiempo real de descongelación o apertura.
 
-## Learning Laravel
+### 🖨️ Integración de Hardware (IoT)
+* **Impresión Térmica Directa:** Conexión con impresoras POS (ESC/POS) para generar etiquetas físicas de trazabilidad al instante.
+* **Driver Personalizado:** Configuración específica para detectar la impresora de red o local bajo el alias `"ticketera"`.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 📊 Dashboard en Tiempo Real
+* **Monitor de Estados (Semáforo):** Visualización clara del estado de los productos:
+    * 🟢 **Verde:** > 45 minutos de vida útil.
+    * 🟡 **Amarillo:** < 45 minutos (Advertencia).
+    * 🔴 **Rojo:** < 15 minutos (Peligro).
+* **Alertas Sonoras:** Notificación auditiva automática cuando un producto entra en estado crítico (Rojo).
+* **Ordenamiento Inteligente:** Los productos próximos a vencer aparecen automáticamente primero.
+* **Dashboard Global:** Vista unificada que agrupa los vencimientos activos de las 4 categorías en una sola pantalla de control.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🔄 Acciones de Trazabilidad
+* **Renovación Rápida:** Reimpresión de etiqueta y reinicio del temporizador con un solo clic.
+* **Importación entre Sectores:** Capacidad de compartir un mismo timer (producto) entre diferentes categorías sin duplicar la lógica de vencimiento.
+* **Eliminación:** Gestión de mermas y retiro de productos.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Stack Tecnológico
 
-### Premium Partners
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-10-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+* **Backend:** PHP 8, Laravel (Blade Templates).
+* **Frontend:** JavaScript Vanilla (ES6+, DOM Manipulation, Fetch API), Tailwind CSS.
+* **Servidor:** Apache (vía XAMPP).
+* **Base de Datos:** MySQL.
+* **Hardware:** Integración con impresoras térmicas ESC/POS.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## ⚙️ Requisitos de Instalación
 
-## Code of Conduct
+Para correr este proyecto localmente necesitas:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1.  **PHP 8.1+** instalado.
+2.  **Node.js & NPM**.
+3.  **Composer**.
+4.  **XAMPP** (o cualquier servidor con Apache y MySQL).
+5.  **Drivers de Impresora:** Drivers genéricos o específicos de la marca de tu impresora POS instalados en el sistema operativo.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🔧 Configuración e Instalación
 
-## License
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone [https://github.com/tu-usuario/nombre-repo.git](https://github.com/tu-usuario/nombre-repo.git)
+    cd nombre-repo
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+2.  **Instalar dependencias de Backend:**
+    ```bash
+    composer install
+    ```
+
+3.  **Instalar dependencias de Frontend:**
+    ```bash
+    npm install
+    npm run build
+    ```
+
+4.  **Configurar Entorno:**
+    * Duplica el archivo `.env.example` y renómbralo a `.env`.
+    * Configura tus credenciales de base de datos en el archivo `.env`.
+
+5.  **Base de Datos:**
+    ```bash
+    php artisan migrate --seed
+    ```
+
+6.  **⚠️ Configuración CRÍTICA de la Impresora:**
+    * Para que el sistema de impresión funcione, debes compartir tu impresora en la red (o localmente) y **nombrarla obligatoriamente** como:
+    * **Nombre del recurso compartido:** `ticketera`
+    * *El sistema buscará este nombre específico para enviar los comandos RAW de impresión.*
+
+7.  **Ejecutar:**
+    * Inicia Apache y MySQL en XAMPP.
+    * (Opcional) Usa el servidor de desarrollo de Laravel:
+    ```bash
+    php artisan serve
+    ```
+
+---
+
+## 👤 Autor
+
+**Tahiel Recchia**
+* **Rol:** Desarrollador Full Stack
+* [LinkedIn](https://www.linkedin.com/in/tahiel-recchia)
+* [GitHub](https://github.com/Tahiel-Recchia)
+
+---
+
+> *Este proyecto fue desarrollado para optimizar procesos reales en un entorno de comida rápida, reduciendo el error humano y mejorando la seguridad alimentaria.*
