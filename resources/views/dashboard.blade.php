@@ -45,7 +45,7 @@
                                 <h3 class="text-xl font-black leading-6 text-gray-800 uppercase italic tracking-tighter" id="modal-title">
                                     Importar Vencimiento
                                 </h3>
-                                <button type="button" onclick="closeImportModal()" class="text-gray-400 hover:text-gray-500 transition-colors">
+                                <button type="button" data-action="closeImportModal" class="btn-action text-gray-400 hover:text-gray-500 transition-colors">
                                     <span class="sr-only">Cerrar</span>
                                     <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -94,7 +94,7 @@
 
                             {{-- Pie del Modal --}}
                             <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                <button type="button" onclick="closeImportModal()" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white px-3 py-2 text-sm font-black text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto uppercase tracking-wide">
+                                <button type="button" data-action="closeImportModal" class="btn-action mt-3 inline-flex w-full justify-center rounded-lg bg-white px-3 py-2 text-sm font-black text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto uppercase tracking-wide">
                                     Cancelar
                                 </button>
                             </div>
@@ -192,8 +192,9 @@
 
 
 @endsection
-
 @push('scripts')
-    @vite('resources/js/importTimer.js')
+    @vite('resources/js/dashboardClickHandler.js')
 @endpush
+
+
 

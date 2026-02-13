@@ -21,7 +21,6 @@ export async function importTimer(timerId, productName, location){
             alert('Error al obtener los sectores disponibles.');
         } finally {
             document.body.style.cursor = 'default';
-            btn.classList.remove('opacity-50', 'pointer-events-none');
         }
     }
 
@@ -121,7 +120,7 @@ export async function executeImport(timerId, categoryId) {
     }
 }
 
-window.closeImportModal = function() {
+export function closeImportModal() {
     const modal = document.getElementById('import-modal');
     if (modal) {
         modal.classList.add('hidden');

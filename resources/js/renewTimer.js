@@ -1,7 +1,6 @@
 export function updateTimer(id, categoryId) {
     if (!confirm('¿Estás seguro de que quieres actualizar e imprimir este vencimiento?')) return;
     const card = document.getElementById(`timer-card-${id}`);
-console.log(card)
     if (card) {
         card.style.opacity = '0.5';
         card.style.pointerEvents = 'none';
@@ -21,6 +20,7 @@ console.log(card)
             if (data.status === 'ok') {
                 console.log(id, categoryId);
                 const timeDisplay = card.querySelector('.timer-card');
+                console.log(timeDisplay);
                 if (timeDisplay) timeDisplay.innerText = data.new_expiration_display;
 
                 card.setAttribute('data-expires', data.new_expiration_iso);
