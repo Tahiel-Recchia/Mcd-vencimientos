@@ -1,5 +1,5 @@
-![Estado del Proyecto](https://img.shields.io/badge/Estado-En_proceso-yellow)
-![Versión](https://img.shields.io/badge/Versión-0.9.0-blue)
+![Estado del Proyecto](https://img.shields.io/badge/Estado-Finalizado-success)
+![Versión](https://img.shields.io/badge/Versión-1.0.0-blue)
 
 > **Solución Full Stack** diseñada para automatizar el control de vida útil secundaria, impresión de etiquetas y trazabilidad de productos en entornos de comida rápida de alta demanda.
 
