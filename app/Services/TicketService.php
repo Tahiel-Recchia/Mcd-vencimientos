@@ -65,4 +65,17 @@ class TicketService
             return "Error de impresión: " . $e->getMessage();
         }
     }
+
+    public function printUpdateTicket($product, $expirationRule, array $calculatedDates){
+       $formattedData = [
+            'productName' => $product->name,
+            'productLocation' => $expirationRule->location,
+            'elaborationTime' => $calculatedDates['elaborationTime'],
+            'expirationTime' => $calculatedDates['expirationTime'],
+            'raw_defrosting_minutes' => $expirationRule->defrosting_time,
+            'defrostingTime' => $calculatedDates['defrostingTime'],
+        ];
+
+       return $this->printTicket($formattedData);
+    }
 }

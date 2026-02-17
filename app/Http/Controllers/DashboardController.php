@@ -17,9 +17,7 @@ class DashboardController extends Controller
         $categoryId = session('category');
         $category = Category::find($categoryId);
         $timers = $category->activeTimers()->where('is_active', true)
-            ->with(['product', 'expirationRule'])
-            ->orderBy('expires_at', 'asc')
-            ->get();
+            ->visibleInDashboard()->get();
 
         return view('dashboard', compact('timers', 'category'));
     }
@@ -28,11 +26,8 @@ class DashboardController extends Controller
     public function globalDashboard()
     {
         $categories = Category::with(['activeTimers' => function ($query) {
-            $query->where('is_active', true)
-                ->orderBy('expires_at', 'asc')
-                ->with(['product', 'expirationRule']);
-        }])
-            ->get();
+            $query->visibleInDashboard();
+        }])->get();
 
         return view('globalDashboard', compact('categories'));
     }
@@ -41,18 +36,9 @@ class DashboardController extends Controller
     {
         $timer = ActiveTimer::find($timerId);
         if (!$timer) return response()->json(['success' => false, 'message' => 'Timer no encontrado'], 404);
-        $categoriesCount = $timer->categories()->count();
-        if ($categoriesCount > 1 && $categoryId) {
-            $timer->categories()->detach($categoryId);
-            return response()->json([
-                'status' => 'ok',
-                'message' => 'Desvinculado de esta categoría'
-            ]);
-        } else {
-            $timer->update(['is_active' => false]);
-            $timer->categories()->detach();
-            return response()->json(['success' => true, 'message' => 'Timer desactivado globalmente']);
-        }
+        $result = $timer->deleteTimer($categoryId);
+
+        return response()->json($result);
 
     }
 
@@ -64,29 +50,22 @@ class DashboardController extends Controller
 
         $rule = $timer->expirationRule;
         $product = $rule->product;
-        $expirationDate = $rule->calculateExpirationDate($product, $rule->defrosting_time, 0, $rule->location);
+        $calculatedDates = $rule->calculateExpirationDate($product, $rule->defrosting_time, 0, $rule->location);
 
-        $printResult = $ticketService->printTicket([
-            'productName' => $product->name,
-            'productLocation' => $rule->location,
-            'elaborationTime' => $expirationDate['elaborationTime'],
-            'expirationTime' => $expirationDate['expirationTime'],
-            'raw_defrosting_minutes' => $rule->defrosting_time,
-            'defrostingTime' => $expirationDate['defrostingTime'],
-        ]);
+        $printResult = $ticketService->printUpdateTicket($product, $rule, $calculatedDates);
 
         if ($printResult === true) {
             $timer->update([
-                'started_at' => $expirationDate['elaborationTime'],
-                'expires_at' => $expirationDate['expirationTime'],
+                'started_at' => $calculatedDates['elaborationTime'],
+                'expires_at' => $calculatedDates['expirationTime'],
             ]);
 
             return response()->json([
                 'status' => 'ok',
-                'new_expiration_display' => $expirationDate['expirationTime']->format('H:i:s'),
-                'new_expiration_iso' => $expirationDate['expirationTime']->toIso8601String(),
-                'elaborationTime' => $expirationDate['elaborationTime']->format('H:i d/m'),
-                'expirationTime' => $expirationDate['expirationTime']->format('H:i d/m'),
+                'new_expiration_display' => $calculatedDates['expirationTime']->format('H:i:s'),
+                'new_expiration_iso' => $calculatedDates['expirationTime']->toIso8601String(),
+                'elaborationTime' => $calculatedDates['elaborationTime']->format('H:i d/m'),
+                'expirationTime' => $calculatedDates['expirationTime']->format('H:i d/m'),
             ]);
         }
 
