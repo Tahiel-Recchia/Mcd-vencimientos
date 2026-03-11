@@ -84,7 +84,7 @@
       <p><strong>Optimización Operativa:</strong> Permite a la gerencia identificar rápidamente patrones de desperdicio, evaluar la velocidad de rotación durante los turnos y tomar decisiones precisas basadas en datos para reducir costos de inventario.</p>
     </td>
     <td width="60%">
-      <img src="screenshots/estadisticas-por-area.png" alt="Reporte de Estadísticas por Área" style="max-width:100%;">
+      <img src="screenshots/Estadisticas-por-area.png" alt="Reporte de Estadísticas por Área" style="max-width:100%;">
     </td>
   </tr>
 </table>
