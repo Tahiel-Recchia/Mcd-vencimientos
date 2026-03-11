@@ -53,7 +53,7 @@
     </header>
 
     {{-- CONTENIDO DE LA VISTA --}}
-    <main class="flex-grow overflow-hidden">
+    <main class="flex-grow h-screen">
         @yield('content')
     </main>
 </div>

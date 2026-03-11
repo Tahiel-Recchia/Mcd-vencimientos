@@ -8,7 +8,7 @@ export default defineConfig({
                     'resources/js/app.js',
                     'resources/js/calculateOffsetMinutes.js',
             'resources/js/updateTimers.js',
-                'resources/js/deleteTimer.js'],
+                'resources/js/deleteTimer.js',],
             refresh: true,
         }),
     ],

@@ -18,15 +18,32 @@ export function updateTimer(id, categoryId) {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'ok') {
-                console.log(id, categoryId);
+                const newId = data.new_timer_id;
                 const timeDisplay = card.querySelector('.timer-card');
-                console.log(timeDisplay);
                 if (timeDisplay) timeDisplay.innerText = data.new_expiration_display;
 
-                card.setAttribute('data-expires', data.new_expiration_iso);
-                document.getElementById(`elab-${id}-${categoryId}`).innerText = data.elaborationTime;
-                document.getElementById(`vence-${id}-${categoryId}`).innerText = data.expirationTime;
 
+                //Actualizar nuevos datos
+
+                card.id = `timer-card-${newId}`;
+                card.setAttribute('data-expires', data.new_expiration_iso);
+
+                let elabSpan = document.getElementById(`elab-${id}-${categoryId}`);
+                elabSpan.innerText = data.elaborationTime;
+                elabSpan.id = `elab-${newId}-${categoryId}`;
+
+                let venceSpan = document.getElementById(`vence-${id}-${categoryId}`);
+                venceSpan.innerText = data.expirationTime;
+                venceSpan.id = `vence-${newId}-${categoryId}`;
+
+                let btnDelete = card.querySelector('.btn-eliminar');
+                btnDelete.setAttribute('data-timer-id', `${newId}`);
+
+                let btnImport = card.querySelector('.btn-importar');
+                btnImport.setAttribute('data-timer-id', `${newId}`);
+
+                let btnRenew = card.querySelector('.btn-renovar');
+                btnRenew.setAttribute('data-timer-id', `${newId}`);
 
                 card.classList.add('animate-success', 'ring-4', 'ring-green-500/50');
                 setTimeout(() => {

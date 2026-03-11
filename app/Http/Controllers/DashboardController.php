@@ -36,7 +36,7 @@ class DashboardController extends Controller
     {
         $timer = ActiveTimer::find($timerId);
         if (!$timer) return response()->json(['success' => false, 'message' => 'Timer no encontrado'], 404);
-        $result = $timer->deleteTimer($categoryId);
+        $result = $timer->deleteTimer();
 
         return response()->json($result);
 
@@ -51,11 +51,16 @@ class DashboardController extends Controller
         $rule = $timer->expirationRule;
         $product = $rule->product;
         $calculatedDates = $rule->calculateExpirationDate($product, $rule->defrosting_time, 0, $rule->location);
-
+        $category = $timer->category;
         $printResult = $ticketService->printUpdateTicket($product, $rule, $calculatedDates);
 
         if ($printResult === true) {
-            $timer->update([
+
+            $timer->updateTimer();
+
+            $newTimer = $category->activeTimers()->create([
+                'product_id' => $rule->product_id,
+                'expiration_rule_id' => $rule->id,
                 'started_at' => $calculatedDates['elaborationTime'],
                 'expires_at' => $calculatedDates['expirationTime'],
             ]);
@@ -66,6 +71,7 @@ class DashboardController extends Controller
                 'new_expiration_iso' => $calculatedDates['expirationTime']->toIso8601String(),
                 'elaborationTime' => $calculatedDates['elaborationTime']->format('H:i d/m'),
                 'expirationTime' => $calculatedDates['expirationTime']->format('H:i d/m'),
+                'new_timer_id' => $newTimer->id,
             ]);
         }
 
@@ -74,51 +80,33 @@ class DashboardController extends Controller
 
     public function importTimer($timerId, $categoryId, TicketService $ticketService)
     {
-        $category = Category::findOrFail($categoryId);
-        $timer = ActiveTimer::with(['product', 'expirationRule'])->findOrFail($timerId);
-        $result = $category->activeTimers()->syncWithoutDetaching([$timerId]);
+        $timer = ActiveTimer::findOrFail($timerId);
+        $searchedCategory = Category::findOrFail($categoryId);
 
-        if (empty($result['attached'])) {
+        $exists = $searchedCategory->activeTimers()
+            ->where('group_id', $timer->group_id)
+            ->exists();
+
+
+        if ($exists) {
             return response()->json([
                 'success' => false,
                 'message' => 'El timer ya existe en esa categoría'
             ], 409);
         }
 
+        $importedTimer = $timer->import($categoryId);
+
         try {
-            \Log::info("Intentando imprimir ticket para: " . $timer->product->name);
+            \Log::info("Intentando imprimir ticket para: " . $importedTimer->product->name);
 
-            $rule = $timer->expirationRule;
-
-            $defrostingMinutes = $rule ? (int)$rule->defrosting_time : 0;
-
-
-            $location = $rule ? ($rule->location ?? 'General') : 'General';
-
-
-            $startedAt = Carbon::parse($timer->started_at);
-            $expiresAt = Carbon::parse($timer->expires_at);
-
-
-            $defrostingDateFormatted = $startedAt->copy()->addMinutes($defrostingMinutes);
-
-            $ticketData = [
-                'productName' => $timer->product->name,
-                'productLocation' => $location,
-                'elaborationTime' => $startedAt,
-                'expirationTime' => $expiresAt,
-                'raw_defrosting_minutes' => $defrostingMinutes,
-                'defrostingTime' => $defrostingDateFormatted,
-            ];
-
-            $ticketService->printTicket($ticketData);
+            $ticketService->printTicket($importedTimer->getTicketData());
             \Log::info("Ticket enviado correctamente.");
 
         } catch (\Exception $e) {
             \Log::error("Error imprimiendo ticket: " . $e->getMessage());
 
         }
-
 
         session(['category' => $categoryId]);
 
@@ -130,19 +118,16 @@ class DashboardController extends Controller
 
     public function getCategoriesFromProduct($timerId)
     {
-        $timer = ActiveTimer::with(['categories', 'product.category'])->findOrFail($timerId);
+        $timer = ActiveTimer::with(['category', 'product.category'])->findOrFail($timerId);
+        $data = $timer->getImportOptions();
+        if($data){
+            return response()->json(['success' => true, 'options' => $data]);
+        }
+        return response()->json(['success' => false, 'message' => 'No se encontraron resultados']);
+    }
 
-        $currentCategoryIds = $timer->categories->pluck('id')->toArray();
-        $allowedCategories = $timer->product->category;
-
-        $data = $allowedCategories->map(function($category) use ($currentCategoryIds) {
-            return [
-                'id' => $category->id,
-                'name' => $category->name,
-                'is_present' => in_array($category->id, $currentCategoryIds)
-            ];
-        });
-
-        return response()->json($data);
+    public function getAllStadisticsFromTimers(){
+        $elminated = ActiveTimer::getAllEliminatedTimers();
+        return response()->json($elminated);
     }
 }

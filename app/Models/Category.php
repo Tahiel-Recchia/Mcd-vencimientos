@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    use HasFactory;
     protected $fillable = ['name'];
 
     public function products()
@@ -15,7 +17,7 @@ class Category extends Model
 
     public function activeTimers()
     {
-        return $this->belongsToMany(ActiveTimer::class);
+        return $this->hasMany(ActiveTimer::class);
     }
 
     public function getStylesAttribute(): array

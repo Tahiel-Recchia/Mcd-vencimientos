@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PrintController;
+use App\Http\Controllers\StadisticsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
@@ -19,3 +20,4 @@ Route::get('/globalDashboard/', [DashboardController::class, 'globalDashboard'])
 Route::put('/updateTimer/{id}', [DashboardController::class, 'updateTimer'])->name('timers.update');
 Route::get('/timers/{id}/categories', [DashboardController::class, 'getCategoriesFromProduct']);
 Route::post('/import-timer/{timer}/{category}', [DashboardController::class, 'importTimer'])->name('timers.import');
+Route::get('/stadistics', [StadisticsController::class, 'mostrarEstadisticas'])->name('stadistics');

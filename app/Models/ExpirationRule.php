@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 class ExpirationRule extends Model
 {
+    use HasFactory;
     protected $fillable = ['product_id', 'location', 'duration_ minutes'];
 
     public function product(){

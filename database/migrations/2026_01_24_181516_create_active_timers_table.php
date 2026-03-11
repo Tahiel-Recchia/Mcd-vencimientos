@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('active_timers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->foreignId('expiration_rule_id')->constrained()->onDelete('cascade');
             $table->dateTime('started_at'); // Cuándo se sacó/imprimió (Elaboración)
             $table->dateTime('expires_at'); // Cuándo vence (Elaboración + Duración)
             $table->boolean('is_active')->default(true);
+            $table->string('state')->default('active');
             $table->timestamps();
         });
     }

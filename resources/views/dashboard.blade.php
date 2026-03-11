@@ -149,7 +149,7 @@
                                             data-action="delete"
                                             data-timer-id="{{ $timer->id}}"
                                             data-category-id="{{ $category->id }}"
-                                            class="btn-action bg-red-50 hover:bg-red-100 text-red-600 flex flex-col items-center justify-center transition-colors active:bg-red-200 group">
+                                            class="btn-eliminar btn-action bg-red-50 hover:bg-red-100 text-red-600 flex flex-col items-center justify-center transition-colors active:bg-red-200 group">
                                         <svg class="w-5 h-5 mb-0.5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                                         </svg>
@@ -163,7 +163,7 @@
                                             data-timer-id="{{ $timer->id }}"
                                            data-product-name="{{$timer->product->name}}"
                                             data-location="{{$timer->expirationRule->location ?? 'General'}}"
-                                            class="btn-action btn-action-timer bg-slate-100 hover:bg-slate-200 text-slate-600 flex flex-col items-center justify-center transition-colors active:bg-slate-300 group z-10">
+                                            class="btn-importar btn-action btn-action-timer bg-slate-100 hover:bg-slate-200 text-slate-600 flex flex-col items-center justify-center transition-colors active:bg-slate-300 group z-10">
                                         <svg class="w-5 h-5 mb-0.5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                                         </svg>
@@ -175,7 +175,7 @@
                                             data-action="renew"
                                             data-timer-id="{{$timer->id}}"
                                             data-category-id="{{$category->id}}"
-                                            class="btn-action bg-puesto-btn text-puesto-btn-text flex flex-col items-center justify-center transition-all hover:brightness-105 active:opacity-80 group">
+                                            class="btn-renovar btn-action bg-puesto-btn text-puesto-btn-text flex flex-col items-center justify-center transition-all hover:brightness-105 active:opacity-80 group">
                                         <svg class="w-5 h-5 mb-0.5 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                                         </svg>

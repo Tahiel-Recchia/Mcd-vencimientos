@@ -69,6 +69,24 @@
       <img src="screenshots/dashboard-Global.png" alt="Dashboard Global de Todas las Categorías" style="max-width:100%;">
     </td>
   </tr>
+<tr>
+    <td width="40%" valign="top">
+      <h3>5. Módulo de Analítica y Estadísticas</h3>
+      <p><strong>Inteligencia de Negocio:</strong> Análisis histórico y detallado del ciclo de vida de los productos en cada área.</p>
+      <ul>
+        <li><strong>Métricas de Rendimiento:</strong>
+            <br>🗑️ <strong>Más Eliminados:</strong> Productos consumidos que no requirieron reposición inmediata.
+            <br>⏰ <strong>Más Vencidos:</strong> Alerta directa sobre productos no utilizados que se transformaron en desperdicio.
+            <br>🔄 <strong>Más Renovados:</strong> Indicador de alta rotación; productos consumidos y repuestos constantemente.
+        </li>
+        <li><strong>Ranking Dinámico (Top 5):</strong> El sistema genera automáticamente un podio por categoría, destacando de forma visual los productos con mayor incidencia en el primer puesto.</li>
+      </ul>
+      <p><strong>Optimización Operativa:</strong> Permite a la gerencia identificar rápidamente patrones de desperdicio, evaluar la velocidad de rotación durante los turnos y tomar decisiones precisas basadas en datos para reducir costos de inventario.</p>
+    </td>
+    <td width="60%">
+      <img src="screenshots/estadisticas_por_area.png" alt="Reporte de Estadísticas por Área" style="max-width:100%;">
+    </td>
+  </tr>
 </table>
 
 ---

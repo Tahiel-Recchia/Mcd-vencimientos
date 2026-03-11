@@ -59,8 +59,8 @@ class ProductCatalogSeeder extends Seeder
         // 7. Donuts
         $p = $cocina->products()->create(['name' => 'Donuts', 'active' => true]);
         $p->expirationRules()->create(['location' => 'A temperatura ambiente', 'duration_minutes' => 1440, 'defrosting' => 1, 'defrosting_time' => 90]); // 24 horas
-        $p->Category()->attach($servicio->id);
-        $p->Category()->attach($mccafe->id);
+        $p->category()->attach($servicio->id);
+        $p->category()->attach($mccafe->id);
         // 8. Ensaladas
         $p = $cocina->products()->create(['name' => 'Ensaladas', 'active' => true]);
         $p->expirationRules()->create(['location' => 'Refrigerador o vitrina', 'duration_minutes' => 840]); // 14 horas (máximo)

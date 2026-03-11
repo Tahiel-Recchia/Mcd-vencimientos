@@ -1,7 +1,9 @@
+import {c} from "caniuse-lite/data/browserVersions.js";
+
 export async function importTimer(timerId, productName, location){
 
         document.body.style.cursor = 'wait';
-
+        console.log(timerId);
         try {
             const response = await fetch(`/timers/${timerId}/categories`, {
                 method: 'GET',
@@ -11,9 +13,14 @@ export async function importTimer(timerId, productName, location){
                 }
             });
 
-            if (!response.ok) throw new Error('Error al cargar sectores');
+            console.log(response);
 
-            const categories = await response.json();
+
+            const data = await response.json();
+            const categories = data.options;
+            console.log(categories);
+            if (!response.ok) throw new Error('Error al cargar sectores');
+            console.log(categories);
             openImportModal(timerId, categories, productName, location);
 
         } catch (error) {
